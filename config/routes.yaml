@@ -1,0 +1,13 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+login_client:
+    path: /client/login
+    methods: POST
+
+login_admin:
+    path: /admin/login
+    methods: POST
