@@ -62,8 +62,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+
+
+    #[ORM\Column(length: 255)]
+    private ?string $adress = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $lastName = null;
+
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $apiKey = null;
+    private ?string $comment = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Cities $cities = null;
 
 
     public function getId(): ?int
@@ -141,14 +153,52 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getApiKey(): ?string
+
+
+    public function getAdress(): ?string
     {
-        return $this->apiKey;
+        return $this->adress;
     }
 
-    public function setApiKey(?string $apiKey): static
+    public function setAdress(string $adress): static
     {
-        $this->apiKey = $apiKey;
+        $this->adress = $adress;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): static
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getComment(): ?string
+    {
+        return $this->comment;
+    }
+
+    public function setComment(?string $comment): static
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    public function getCities(): ?Cities
+    {
+        return $this->cities;
+    }
+
+    public function setCities(?Cities $cities): static
+    {
+        $this->cities = $cities;
 
         return $this;
     }

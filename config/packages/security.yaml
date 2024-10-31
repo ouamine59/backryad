@@ -40,6 +40,8 @@ security:
         failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
   access_control:
+  
+    - { path: ^/products/new, roles: IS_AUTHENTICATED_FULLY }
     - { path: ^/$, roles: PUBLIC_ACCESS }
     - { path: ^/docs, roles: PUBLIC_ACCESS }
     - { path: ^/client/login, roles: PUBLIC_ACCESS }
